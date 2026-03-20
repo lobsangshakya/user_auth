@@ -1,39 +1,7 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-    <style>
-        body { font-family: Arial; max-width: 800px; margin: 50px auto; padding: 20px; }
-        .header { display: flex; justify-content: space-between; align-items: center; }
-        .card { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px; }
-        a { color: #007bff; text-decoration: none; }
-        .btn-logout { background: #dc3545; color: white; padding: 10px 20px; border-radius: 5px; }
-    </style>
-</head>
+<html><head><title>Dashboard</title></head>
 <body>
-    <div class="header">
-        <h1>Welcome to Dashboard!</h1>
-        <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
-    </div>
-    
-    {% if messages %}
-        <div style="color: green; margin: 10px 0;">
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-    
-    <div class="card">
-        <h3>Your Account Information</h3>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email Verified:</strong> Yes ✓</p>
-    </div>
-    
-    <div class="card">
-        <h3>Protected Content</h3>
-        <p>This page is only visible to authenticated users. You have successfully logged in with email verification!</p>
-    </div>
-</body>
-</html>
+<h1>Welcome, {{ user.email }}!</h1>
+<p>Email verified ✓</p>
+<a href="{% url 'logout' %}">Logout</a>
+</body></html>

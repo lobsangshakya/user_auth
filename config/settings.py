@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',  # Our authentication app
+    'minimal',  # Minimal auth app
 ]
 
 MIDDLEWARE = [
@@ -127,7 +127,7 @@ TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom user model
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'minimal.User'
 
 # Email configuration (SMTP)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
