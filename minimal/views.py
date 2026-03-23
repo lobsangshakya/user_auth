@@ -1,18 +1,16 @@
 from django.shortcuts import render, redirect
+from .models import OTP
 from django.contrib.auth import login, authenticate, logout
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import OTP
-from django.core.mail import send_mail
 
 def signup(request):
     if request.method == 'POST':
+        print("Signup request received")
         email = request.POST['email']
         password = request.POST['password']
 
-        print("Signup request received for:", email)
-        
         if User.objects.filter(username=email).exists():
             messages.error(request, 'Email already registered.')
             return render(request, 'signup.html')
@@ -26,13 +24,21 @@ def signup(request):
         user.save()
 
         otp = OTP.objects.create(user=user, code=OTP.generate())
-        send_mail(
-    'Your OTP Code',
-    f'Your OTP is {otp.code}',
-    'lobsangshakya5@gmail.com', 
-    [email],
-    fail_silently=False
-)
+        print("OTP generated:", otp.code)
+        print("Sending OTP email")
+        
+        try:
+            send_mail(
+                'Your OTP Code',
+                f'Your OTP is {otp.code}',
+                'lobsangshakya5@gmail.com', 
+                [email],
+                fail_silently=False
+            )
+            print("Email sent successfully!")
+        except Exception as e:
+            print(f"Failed to send email: {e}")
+
         messages.success(request, f'OTP: {otp.code}')  # Show OTP in message for testing
         return redirect('verify', user.id)
     return render(request, 'signup.html')
