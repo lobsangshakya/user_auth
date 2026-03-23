@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html><head><title>Dashboard</title></head>
-<body>
-<h1>Welcome, {{ user.email }}!</h1>
-<p>Email verified ✓</p>
-<a href="{% url 'logout' %}">Logout</a>
-</body></html>
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Minimal Auth{% endblock %}
+{% block header %}Dashboard{% endblock %}
+
+{% block content %}
+<p style="margin-bottom: 2rem;">Welcome back, <strong>{{ request.user.email }}</strong>! You have successfully logged in.</p>
+<p class="link-text"><a href="{% url 'logout' %}">Logout</a></p>
+{% endblock %}
