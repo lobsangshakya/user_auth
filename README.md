@@ -37,7 +37,7 @@ It demonstrates a clean flow for:
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone <ygit@github.com:lobsangshakya/user_auth.git>
 cd <your-project-folder>
 ```
 
