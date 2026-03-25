@@ -6,24 +6,31 @@ This project is a minimal and beginner-friendly Django authentication system tha
 
 It demonstrates a clean flow for:
 
-* User registration
-* OTP generation and verification
-* Secure login after verification
+* User registration  
+* OTP generation and verification  
+* Secure login after verification  
+
+---
 
 ## Features
 
-* User signup with email and password
-* OTP generation and validation
-* Email-based verification (via Brevo API)
-* Login and logout functionality
-* Clean and minimal backend structure
+* User signup with email and password  
+* OTP generation and validation  
+* Email-based verification (via Brevo API)  
+* Login and logout functionality  
+* Masked email display for better privacy  
+* Clean and minimal backend structure  
+
+---
 
 ## Tech Stack
 
-* Django
-* SQLite
-* Anymail (Brevo integration)
-* Python-dotenv
+* Django  
+* SQLite  
+* Anymail (Brevo integration)  
+* Python-dotenv  
+
+---
 
 ## Setup Instructions
 
@@ -71,22 +78,43 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+---
+
 ## Usage
 
-* Register using your email
-* Receive OTP (or view locally if email is restricted)
-* Verify account
-* Login and access dashboard
+* Register using your email  
+* Receive OTP via email  
+* Verify account  
+* Login and access dashboard  
+
+---
+
+## Screenshots
+
+### OTP Email
+![OTP Email](images/otp.png)
+
+### Dashboard
+![Dashboard](images/dashboard.png)
+
+---
 
 ## Notes
 
-* Email functionality depends on Brevo account activation
-* For development/demo, OTP can be displayed on UI if email is restricted
+* Email functionality depends on Brevo account activation  
+* For development/demo, OTP can be displayed locally if email sending is restricted  
+* Make sure your sender email is verified in Brevo  
+
+---
 
 ## Security
 
-* Sensitive data is stored in `.env` file
-* `.env` is excluded from version control
+* Sensitive data is stored in `.env` file  
+* `.env` is excluded from version control  
+* API keys are not exposed  
+* Email masking is implemented for user privacy  
+
+---
 
 ## License
 
