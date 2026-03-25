@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
+import os
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / ".env")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'minimal',  # Minimal auth app
+    "anymail",
 ]
 
 MIDDLEWARE = [
@@ -128,12 +135,28 @@ TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# SECRET_KEY = os.getenv("SECRET_KEY")
+# DEBUG = os.getenv("DEBUG") == "True"
 
-# Email configuration (SMTP)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# # Email configuration (SMTP)
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'lobsangshakya5@gmail.com'
-EMAIL_HOST_PASSWORD = 'xdjywfayidiczxdc'
+# EMAIL_HOST_USER = os.getenv("EMAIL_USER")
+# EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASS")
+
+# DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+
+# Email transactional provider (OTP)
+EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
+
+ANYMAIL = {
+    "BREVO_API_KEY": os.getenv("BREVO_API_KEY"),
+}
+
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
+SERVER_EMAIL = DEFAULT_FROM_EMAIL # Your verified custom domain email
+
+print("BREVO:", os.getenv("BREVO_API_KEY"))

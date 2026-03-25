@@ -3,21 +3,26 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-# Virtual environment
+# Virtual environments
 venv/
 newenv/
 env/
+.venv/
 
 # Django
 db.sqlite3
 *.sqlite3
 
-# Environment variables
+# Environment variables (VERY IMPORTANT)
 .env
+.env.*
 
-# Static / media (optional)
+# Static / media
 media/
 staticfiles/
+
+# Logs
+*.log
 
 # macOS
 .DS_Store
@@ -25,5 +30,14 @@ staticfiles/
 # VS Code
 .vscode/
 
-# Logs
-*.log
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Coverage / testing
+.coverage
+htmlcov/
+
+# Migrations cache (optional)
+**/__pycache__/

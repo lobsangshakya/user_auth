@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('minimal.urls')),  # IMPORTANT
     path('admin/', admin.site.urls),
-    path('', include('minimal.urls')),  # Minimal auth URLs
 ]
